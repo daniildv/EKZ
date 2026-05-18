@@ -62,8 +62,8 @@ namespace EKZ
             var addWindow = new AddProductWindow { Owner = this };
             if (addWindow.ShowDialog() == true)
             {
-                LoadProducts();   // обновляем список
-                ApplyFilters();   // если нужно
+                LoadProducts();   
+                ApplyFilters();   
             }
         }
     
