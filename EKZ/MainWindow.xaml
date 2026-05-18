@@ -27,17 +27,33 @@
                         <TextBlock Text="{Binding Quantity}"/>
                     </StackPanel>
                     <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding Discount }"/>
+                        <TextBlock Text="{Binding Discount}"/>
                     </StackPanel>
                 </Grid>
             </Border>
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+            <TextBox x:Name="SearchBox" Width="120" Margin="2" ToolTip="Поиск по названию"/>
+            <TextBox x:Name="PriceFrom" Width="60" Margin="2" ToolTip="Цена от"/>
+            <TextBlock Text="–" VerticalAlignment="Center" Margin="0,2"/>
+            <TextBox x:Name="PriceTo" Width="60" Margin="2" ToolTip="Цена до"/>
+            <ComboBox x:Name="SortComboBox" Width="130" Margin="5,2,2,2" SelectedIndex="0">
+                <ComboBoxItem Content="Без сортировки"/>
+                <ComboBoxItem Content="Название А-Я"/>
+                <ComboBoxItem Content="Название Я-А"/>
+                <ComboBoxItem Content="Цена ↑"/>
+                <ComboBoxItem Content="Цена ↓"/>
+            </ComboBox>
+            <Button Content="+ Добавить" Click="AddProduct_Click" Margin="10,2" Width="100"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="ProductsList" ItemTemplate="{StaticResource ProductTemplate}"/>
         </ScrollViewer>
     </Grid>
-
-
 </Window>
